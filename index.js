@@ -80,74 +80,74 @@ app.get("/emps",(request, response)=>{
 
 //  });
 
- app.delete("/emps/:No", (request, response)=>{
-   console.log("request parameters received is : ")
-   console.log(request.params.No);
+//  app.delete("/emps/:No", (request, response)=>{
+//    console.log("request parameters received is : ")
+//    console.log(request.params.No);
 
-   var connection = mysql.createConnection(connectionDetails);
+//    var connection = mysql.createConnection(connectionDetails);
 
-    var statement = `delete from Emp where No = ${request.params.No}`;
+//     var statement = `delete from Emp where No = ${request.params.No}`;
 
-    console.log("query prepared is : ")
-    console.log(statement);
-    connection.query(statement, (error, result)=>
-    {
-        if(error== null)
-        {
-            var resultInJSONString = JSON.stringify(result);
-            response.setHeader("Content-Type","application/json");
-            connection.end();
-            response.write(resultInJSONString);
-            response.end();
-        }
-        else
-        {
-            var errorInJSONString = JSON.stringify(error);
-            response.setHeader("Content-Type","application/json");
-            connection.end();
-            response.write(errorInJSONString);
-            response.end();
-        }
-    })
-
-
- });
-
-  app.put("/emps/:No", (request, response)=>{
-   console.log("request parameters received is : ")
-   console.log(request.params.No);
-
-   console.log("request body received is : ")
-   console.log(request.body);
-
-   var connection = mysql.createConnection(connectionDetails);
-
-    var statement = `update Emp  set Name = '${request.body.Name}', 
-                     Address ='${request.body.Address}' where No=${parseInt(request.params.No)}`;
-
-    console.log("query prepared is : ")
-    console.log(statement);
-    connection.query(statement, (error, result)=>
-    {
-        if(error== null)
-        {
-            var resultInJSONString = JSON.stringify(result);
-            response.setHeader("Content-Type","application/json");
-            connection.end();
-            response.write(resultInJSONString);
-            response.end();
-        }
-        else
-        {
-            var errorInJSONString = JSON.stringify(error);
-            response.setHeader("Content-Type","application/json");
-            connection.end();
-            response.write(errorInJSONString);
-            response.end();
-        }
-    })
+//     console.log("query prepared is : ")
+//     console.log(statement);
+//     connection.query(statement, (error, result)=>
+//     {
+//         if(error== null)
+//         {
+//             var resultInJSONString = JSON.stringify(result);
+//             response.setHeader("Content-Type","application/json");
+//             connection.end();
+//             response.write(resultInJSONString);
+//             response.end();
+//         }
+//         else
+//         {
+//             var errorInJSONString = JSON.stringify(error);
+//             response.setHeader("Content-Type","application/json");
+//             connection.end();
+//             response.write(errorInJSONString);
+//             response.end();
+//         }
+//     })
 
 
- });
+//  });
+
+//   app.put("/emps/:No", (request, response)=>{
+//    console.log("request parameters received is : ")
+//    console.log(request.params.No);
+
+//    console.log("request body received is : ")
+//    console.log(request.body);
+
+//    var connection = mysql.createConnection(connectionDetails);
+
+//     var statement = `update Emp  set Name = '${request.body.Name}', 
+//                      Address ='${request.body.Address}' where No=${parseInt(request.params.No)}`;
+
+//     console.log("query prepared is : ")
+//     console.log(statement);
+//     connection.query(statement, (error, result)=>
+//     {
+//         if(error== null)
+//         {
+//             var resultInJSONString = JSON.stringify(result);
+//             response.setHeader("Content-Type","application/json");
+//             connection.end();
+//             response.write(resultInJSONString);
+//             response.end();
+//         }
+//         else
+//         {
+//             var errorInJSONString = JSON.stringify(error);
+//             response.setHeader("Content-Type","application/json");
+//             connection.end();
+//             response.write(errorInJSONString);
+//             response.end();
+//         }
+//     })
+
+
+//  });
 
 app.listen(9999, ()=>{console.log("server started at 9999")})
