@@ -47,38 +47,38 @@ app.get("/emps",(request, response)=>{
 
 });
 
-//  app.post("/emps", (request, response)=>{
-//    console.log("request body received is : ")
-//    console.log(request.body);
+ app.post("/emps", (request, response)=>{
+   console.log("request body received is : ")
+   console.log(request.body);
 
-//    var connection = mysql.createConnection(connectionDetails);
+   var connection = mysql.createConnection(connectionDetails);
 
-//     var statement = `insert into Emp values(${parseInt(request.body.No)},'${request.body.Name}', '${request.body.Address}')`;
+    var statement = `insert into Emp values(${parseInt(request.body.No)},'${request.body.Name}', '${request.body.Address}')`;
 
-//     console.log("query prepared is : ")
-//     console.log(statement);
-//     connection.query(statement, (error, result)=>
-//     {
-//         if(error== null)
-//         {
-//             var resultInJSONString = JSON.stringify(result);
-//             response.setHeader("Content-Type","application/json");
-//             connection.end();
-//             response.write(resultInJSONString);
-//             response.end();
-//         }
-//         else
-//         {
-//             var errorInJSONString = JSON.stringify(error);
-//             response.setHeader("Content-Type","application/json");
-//             connection.end();
-//             response.write(errorInJSONString);
-//             response.end();
-//         }
-//     })
+    console.log("query prepared is : ")
+    console.log(statement);
+    connection.query(statement, (error, result)=>
+    {
+        if(error== null)
+        {
+            var resultInJSONString = JSON.stringify(result);
+            response.setHeader("Content-Type","application/json");
+            connection.end();
+            response.write(resultInJSONString);
+            response.end();
+        }
+        else
+        {
+            var errorInJSONString = JSON.stringify(error);
+            response.setHeader("Content-Type","application/json");
+            connection.end();
+            response.write(errorInJSONString);
+            response.end();
+        }
+    })
 
 
-//  });
+ });
 
 //  app.delete("/emps/:No", (request, response)=>{
 //    console.log("request parameters received is : ")
